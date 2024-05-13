@@ -9,13 +9,14 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import request from '@/utils/request'
 
-interface Foo {
-  a: string
-  b: number
-}
-
-interface Bar { a: string; b: number }
+request({
+  method: 'GET',
+  url: '/boss/v2/api-docs?group=edu-boss-boot'
+}).then((res: any) => {
+  console.log(res)
+})
 
 export default Vue.extend({
   name: 'App'
