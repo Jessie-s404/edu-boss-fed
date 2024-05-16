@@ -5,7 +5,10 @@
       </el-aside>
       <el-container>
         <el-header>Header</el-header>
-        <el-main>Main</el-main>
+        <el-main>
+          <!-- 子路由出口 -->
+          <router-view/>
+        </el-main>
       </el-container>
     </el-container>
 </template>

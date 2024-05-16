@@ -24,6 +24,7 @@ module.exports = {
         requireLast: true
       }
     }],
-    'eol-last': 0
+    'eol-last': 0,
+    'space-before-function-paren': 0
   }
 }
