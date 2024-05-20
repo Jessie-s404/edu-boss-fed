@@ -13,7 +13,7 @@
         <el-input v-model="form.phone"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="form.password"></el-input>
+        <el-input type="password" v-model="form.password"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button
@@ -33,6 +33,7 @@ import Vue from 'vue'
 import { Form } from 'element-ui'
 import request from '@/utils/request'
 import qs from 'qs'
+import { login } from '@/services/user'
 
 export default Vue.extend({
   name: 'LoginIndex',
@@ -69,12 +70,13 @@ export default Vue.extend({
         this.isLoginLoading = true
 
         // 2.验证通过 -> 提交表单
-        const { data } = await request({
-          method: 'POST',
-          url: '/front/user/login',
-          headers: { 'content-type': 'application/x-www-form-urlencoded' },
-          data: qs.stringify(this.form) // axios 默认发送的是 application/json 格式的数据
-        })
+        const { data } = await login(this.form)
+        // const { data } = await request({
+        //   method: 'POST',
+        //   url: '/front/user/login',
+        //   headers: { 'content-type': 'application/x-www-form-urlencoded' },
+        //   data: qs.stringify(this.form) // axios 默认发送的是 application/json 格式的数据
+        // })
 
         // 3.处理请求结果
         //    失败：给出提示
